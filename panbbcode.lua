@@ -202,6 +202,14 @@ function Para(s)
   return s
 end
 
+function DoubleQuoted(s)
+  return '“' .. s .. '”'
+end
+
+function SoftBreak()
+  return "\n"
+end
+
 function Header(level, s, attr)
   if level == 1 then
     return enclose('u', enclose('size', s, 6))
