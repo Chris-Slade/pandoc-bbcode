@@ -13,6 +13,16 @@ local function enclose(t, s, p)
   end
 end
 
+local function escape(s)
+  if s == nil then
+      return s
+  elseif string.find(s, "%[[^]]+%]") and not string.find(s, '%[plain%]') then
+      return enclose('plain', s)
+  else
+      return s
+  end
+end
+
 local function lookup(t, e)
   for _,v in ipairs(t) do
     if v == e then
@@ -112,7 +122,7 @@ function Doc( body, meta, vars )
 end
 
 function Str(s)
-  return s
+  return escape(s)
 end
 
 function Space()
@@ -185,7 +195,7 @@ function Span(s, attr)
 end
 
 function Plain(s)
-  return s
+  return escape(s)
 end
 
 function Para(s)
