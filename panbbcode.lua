@@ -134,7 +134,7 @@ function LineBreak()
 end
 
 function Emph(s)
-  return enclose('i', s)
+  return enclose('I', s)
 end
 
 function Strong(s)
@@ -150,7 +150,7 @@ function Superscript(s)
 end
 
 function SmallCaps(s)
-  return s
+  return enclose('size', string.upper(s), 2)
 end
 
 function Strikeout(s)
@@ -204,11 +204,13 @@ end
 
 function Header(level, s, attr)
   if level == 1 then
-    return enclose('h', s)
+    return enclose('u', enclose('size', s, 6))
   elseif level == 2 then
-    return enclose('b', enclose('u', s))
-  else
+    return enclose('u', enclose('size', s, 5))
+  elseif level == 3 then
     return enclose('b', s)
+  else
+    return enclose('u', s)
   end
 end
 
