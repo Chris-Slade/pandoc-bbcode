@@ -124,7 +124,7 @@ function LineBreak()
 end
 
 function Emph(s)
-  return enclose('em', s)
+  return enclose('i', s)
 end
 
 function Strong(s)
